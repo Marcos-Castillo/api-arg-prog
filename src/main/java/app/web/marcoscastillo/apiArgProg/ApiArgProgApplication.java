@@ -1,13 +1,13 @@
-package app.web.marcoscastillo.api;
+package app.web.marcoscastillo.apiArgProg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiApplication {
+public class ApiArgProgApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiApplication.class, args);
+		SpringApplication.run(ApiArgProgApplication.class, args);
 	}
 
 }

@@ -8,13 +8,13 @@
 		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>app.web.marcos-castillo</groupId>
-	<artifactId>api</artifactId>
+	<groupId>app.web.marcoscastillo</groupId>
+	<artifactId>apiArgProg</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>api</name>
-	<description>api proyecto de argentina programa portfolio</description>
+	<name>apiArgProg</name>
+	<description>apiArgProg project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,7 +29,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

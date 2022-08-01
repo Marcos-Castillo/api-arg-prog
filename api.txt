@@ -12,9 +12,6 @@ Highly customizable authentication and access-control framework for Spring appli
 MySQL Driver SQL
 MySQL JDBC and R2DBC driver.
 #################################################################
-Spring Boot DevTools DEVELOPER TOOLS
-Provides fast application restarts, LiveReload, and configurations for enhanced development experience.
-#################################################################
 Spring Data JPA SQL
 Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.
 #################################################################
