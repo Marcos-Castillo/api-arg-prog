@@ -11,15 +11,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="proyectos")
-public class Proyectos implements Serializable {
-     
+@Table(name="experiencia")
+public class Experiencia implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String titulo;
+    private String puesto;
+    private String ingreso;
+    private String egreso;
     private String descripcion;
-    private String urlRepositorio;
-    private String link;
 }
