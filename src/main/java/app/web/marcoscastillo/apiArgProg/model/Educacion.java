@@ -22,4 +22,7 @@ public class Educacion implements Serializable{
     private String descripcion;
     private String expedicion;
     private String credencial;
+        
+    private Long id_persona;
+  
 }

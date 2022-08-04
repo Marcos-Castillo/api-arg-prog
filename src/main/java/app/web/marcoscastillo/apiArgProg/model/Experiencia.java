@@ -22,4 +22,6 @@ public class Experiencia implements Serializable {
     private String ingreso;
     private String egreso;
     private String descripcion;
+    
+    private Long id_persona;
 }

@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER");
     }
 
+ /*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -38,4 +39,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                ;
   
     }
+    */
 }

@@ -22,4 +22,6 @@ public class Proyecto implements Serializable {
     private String descripcion;
     private String urlRepositorio;
     private String link;
+    
+    private Long id_persona;
 }

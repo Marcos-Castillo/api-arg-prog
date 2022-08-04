@@ -20,4 +20,6 @@ public class Skill implements Serializable {
     
     private String nombre;
     private int competencia;
+    
+    private Long id_persona;
 }

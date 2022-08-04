@@ -67,4 +67,11 @@ public class Contoller {
 
         return skillServ.verSkill();
     }
+
+    @GetMapping("/menu")
+    @ResponseBody
+    public String verLoginl() {
+
+        return "menu login";
+    }
 }
