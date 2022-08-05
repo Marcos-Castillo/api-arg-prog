@@ -1,4 +1,3 @@
-
 package app.web.marcoscastillo.apiArgProg.service;
 
 import app.web.marcoscastillo.apiArgProg.model.Experiencia;
@@ -8,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExperienciaService implements IExperienciaService{
-    
+public class ExperienciaService implements IExperienciaService {
+
     @Autowired
     public ExperienciaRepository expRepo;
 
@@ -19,7 +18,7 @@ public class ExperienciaService implements IExperienciaService{
     }
 
     @Override
-    public void crearExperiencia (Experiencia exp) {
+    public void crearExperiencia(Experiencia exp) {
         expRepo.save(exp);
     }
 
@@ -34,8 +33,8 @@ public class ExperienciaService implements IExperienciaService{
     }
 
     @Override
-    public void editarExperiencia(Long id) {
-      //implementacion pendiente
+    public void editarExperiencia(Experiencia exp) {
+        expRepo.save(exp);
     }
-    
+
 }

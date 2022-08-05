@@ -4,6 +4,7 @@ package app.web.marcoscastillo.apiArgProg.service;
 import app.web.marcoscastillo.apiArgProg.model.Persona;
 import app.web.marcoscastillo.apiArgProg.repository.PersonaRepository;
 import java.util.List;
+import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class PersonaService implements IPersonaService{
 
     @Override
     public void crearPersona(Persona pers) {
-        persoRepo.save(pers);
+         persoRepo.save(pers);
     }
 
     @Override
@@ -34,8 +35,8 @@ public class PersonaService implements IPersonaService{
     }
 
     @Override
-    public void editarPersona(Long id) {
-      //implementacion pendiente
+    public void editarPersona(Persona pers) {
+         persoRepo.save(pers);
     }
     
 }

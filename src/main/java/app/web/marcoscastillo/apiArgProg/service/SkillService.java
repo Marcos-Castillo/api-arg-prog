@@ -34,8 +34,8 @@ public class SkillService  implements ISkillService{
     }
 
     @Override
-    public void editarSkill(Long id) {
-      //implementacion pendiente
+    public void editarSkill (Skill skill) {
+        skillRepo.save(skill);
     }
     
 }

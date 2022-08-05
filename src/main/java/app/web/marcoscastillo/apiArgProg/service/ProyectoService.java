@@ -1,4 +1,3 @@
-
 package app.web.marcoscastillo.apiArgProg.service;
 
 import app.web.marcoscastillo.apiArgProg.model.Proyecto;
@@ -8,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProyectoService  implements IProyectoService{
-    
+public class ProyectoService implements IProyectoService {
+
     @Autowired
     public ProyectoRepository proyectoRepo;
 
@@ -19,7 +18,7 @@ public class ProyectoService  implements IProyectoService{
     }
 
     @Override
-    public void crearProyecto (Proyecto proyecto) {
+    public void crearProyecto(Proyecto proyecto) {
         proyectoRepo.save(proyecto);
     }
 
@@ -34,8 +33,8 @@ public class ProyectoService  implements IProyectoService{
     }
 
     @Override
-    public void editarProyecto(Long id) {
-      //implementacion pendiente
+    public void editarProyecto(Proyecto proyecto) {
+        proyectoRepo.save(proyecto);
     }
-    
+
 }

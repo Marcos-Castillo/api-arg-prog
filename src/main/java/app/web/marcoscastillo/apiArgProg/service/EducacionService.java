@@ -1,4 +1,3 @@
-
 package app.web.marcoscastillo.apiArgProg.service;
 
 import app.web.marcoscastillo.apiArgProg.model.Educacion;
@@ -8,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EducacionService  implements IEducacionService{
-    
+public class EducacionService implements IEducacionService {
+
     @Autowired
     public EducacionRepository eduRepo;
 
@@ -19,7 +18,7 @@ public class EducacionService  implements IEducacionService{
     }
 
     @Override
-    public void crearEducacion (Educacion edu) {
+    public void crearEducacion(Educacion edu) {
         eduRepo.save(edu);
     }
 
@@ -34,8 +33,8 @@ public class EducacionService  implements IEducacionService{
     }
 
     @Override
-    public void editarEducacion(Long id) {
-      //implementacion pendiente
+    public void editarEducacion(Educacion edu) {
+        eduRepo.save(edu);
     }
-    
+
 }

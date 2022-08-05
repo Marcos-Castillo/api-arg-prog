@@ -13,6 +13,6 @@ public interface IProyectoService {
     
     public Proyecto buscarProyecto (Long id);
     
-    public void editarProyecto (Long id);
+    public void editarProyecto (Proyecto proyecto);
     
 }

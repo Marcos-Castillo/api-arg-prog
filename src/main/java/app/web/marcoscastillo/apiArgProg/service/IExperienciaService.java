@@ -13,6 +13,6 @@ public interface IExperienciaService {
     
     public Experiencia buscarExperiencia (Long id);
     
-    public void editarExperiencia (Long id);
+    public void editarExperiencia (Experiencia exp);
     
 }
