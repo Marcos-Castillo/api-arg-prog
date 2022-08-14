@@ -1,5 +1,14 @@
 package app.web.marcoscastillo.apiArgProg.controller;
 
+/*
+import app.web.marcoscastillo.apiArgProg.security.JwtDto;
+import app.web.marcoscastillo.apiArgProg.security.LoginUser;
+import app.web.marcoscastillo.apiArgProg.security.JwtProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;*/
+
+import org.springframework.security.authentication.AuthenticationManager;
 import app.web.marcoscastillo.apiArgProg.model.*;
 import app.web.marcoscastillo.apiArgProg.service.*;
 import java.util.List;
@@ -20,6 +29,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class Contoller {
 
+    //
+    /*
+    @Autowired
+    JwtProvider jwtProvider;
+    @Autowired
+    AuthenticationManager authenticationManager;*/
+    //
+
     @Autowired
     public IEducacionService eduServ;
     @Autowired
@@ -30,6 +47,23 @@ public class Contoller {
     public IProyectoService proyectoServ;
     @Autowired
     public ISkillService skillServ;
+
+    //Autorizacion
+    /*
+    @PostMapping("/auth")
+    public ResponseEntity<JwtDto> login(@RequestBody LoginUser loginUser) {
+        //validar usuario y devolver un jwt<--
+         log.info("###########################");
+               log.info(loginUser.toString());
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginUser.getUsername(),
+                        loginUser.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = jwtProvider.generateToken(authentication);
+        JwtDto jwtDto = new JwtDto(jwt);
+        return new ResponseEntity(jwtDto, HttpStatus.OK);
+    }*/
 
     // metodod get all
     @GetMapping("/")
