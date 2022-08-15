@@ -1,14 +1,5 @@
 package app.web.marcoscastillo.apiArgProg.controller;
 
-/*
-import app.web.marcoscastillo.apiArgProg.security.JwtDto;
-import app.web.marcoscastillo.apiArgProg.security.LoginUser;
-import app.web.marcoscastillo.apiArgProg.security.JwtProvider;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;*/
-
-import org.springframework.security.authentication.AuthenticationManager;
 import app.web.marcoscastillo.apiArgProg.model.*;
 import app.web.marcoscastillo.apiArgProg.service.*;
 import java.util.List;
@@ -16,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,14 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class Contoller {
 
-    //
-    /*
-    @Autowired
-    JwtProvider jwtProvider;
-    @Autowired
-    AuthenticationManager authenticationManager;*/
-    //
-
     @Autowired
     public IEducacionService eduServ;
     @Autowired
@@ -47,23 +31,6 @@ public class Contoller {
     public IProyectoService proyectoServ;
     @Autowired
     public ISkillService skillServ;
-
-    //Autorizacion
-    /*
-    @PostMapping("/auth")
-    public ResponseEntity<JwtDto> login(@RequestBody LoginUser loginUser) {
-        //validar usuario y devolver un jwt<--
-         log.info("###########################");
-               log.info(loginUser.toString());
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginUser.getUsername(),
-                        loginUser.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtProvider.generateToken(authentication);
-        JwtDto jwtDto = new JwtDto(jwt);
-        return new ResponseEntity(jwtDto, HttpStatus.OK);
-    }*/
 
     // metodod get all
     @GetMapping("/")
@@ -139,30 +106,35 @@ public class Contoller {
     }
 
     // metodod post  guardando
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/persona")
     public ResponseEntity<Persona> crearPersona(@RequestBody Persona pers) {
         perServ.crearPersona(pers);
         return new ResponseEntity(pers, HttpStatus.CREATED);//httpstatus 201  ok + modificado
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/educacion")
     public ResponseEntity<Educacion> crearEducacion(@RequestBody Educacion edu) {
         eduServ.crearEducacion(edu);
         return new ResponseEntity(edu, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/experiencia")
     public ResponseEntity<Experiencia> crearExperiencia(@RequestBody Experiencia exp) {
         expServ.crearExperiencia(exp);
         return new ResponseEntity(exp, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/proyecto")
     public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto) {
         proyectoServ.crearProyecto(proyecto);
         return new ResponseEntity(proyecto, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/skill")
     public ResponseEntity<Skill> crearSkill(@RequestBody Skill skill) {
         skillServ.crearSkill(skill);
@@ -170,30 +142,35 @@ public class Contoller {
     }
 
     // metodod put editando
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/persona")
     public ResponseEntity<Persona> editarPersona(@RequestBody Persona pers) {
         perServ.editarPersona(pers);
         return new ResponseEntity(pers, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/educacion")
     public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion edu) {
         eduServ.editarEducacion(edu);
         return new ResponseEntity(edu, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/experiencia")
     public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia exp) {
         expServ.editarExperiencia(exp);
         return new ResponseEntity(exp, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/proyecto")
     public ResponseEntity<Proyecto> editarProyecto(@RequestBody Proyecto proyecto) {
         proyectoServ.editarProyecto(proyecto);
         return new ResponseEntity(proyecto, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/skill")
     public ResponseEntity<Skill> editarSkill(@RequestBody Skill skill) {
         skillServ.editarSkill(skill);
@@ -201,30 +178,35 @@ public class Contoller {
     }
 
     // metodod delete borrando
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/persona/{id}")
     public ResponseEntity<Persona> borrarPersona(@PathVariable("id") Long id) {
         perServ.borrarPersona(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/educacion/{id}")
     public ResponseEntity<Educacion> borrarEducacion(@PathVariable("id") Long id) {
         eduServ.borrarEducacion(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/experiencia/{id}")
     public ResponseEntity<Experiencia> borrarExperiencia(@PathVariable("id") Long id) {
         expServ.borrarExperiencia(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/proyecto/{id}")
     public ResponseEntity<Proyecto> borrarProyecto(@PathVariable("id") Long id) {
         proyectoServ.borrarProyecto(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/skill/{id}")
     public ResponseEntity<Skill> borrarSkill(@PathVariable("id") Long id) {
         skillServ.borrarSkill(id);
