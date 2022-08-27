@@ -6,6 +6,7 @@ package app.web.marcoscastillo.apiArgProg.controller;
 
 import app.web.marcoscastillo.apiArgProg.model.Proyecto;
 import app.web.marcoscastillo.apiArgProg.service.IProyectoService;
+import app.web.marcoscastillo.apiArgProg.util.Mensaje;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,9 @@ public class ProyectoController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/proyecto")
     public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto) {
+                if(proyecto.getTitulo().isBlank() || proyecto.getDescripcion().isBlank()|| proyecto.getLink().isBlank()|| proyecto.getUrlRepositorio().isBlank() ){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
         proyectoServ.crearProyecto(proyecto);
         return new ResponseEntity(proyecto, HttpStatus.CREATED);
     }
@@ -52,6 +56,9 @@ public class ProyectoController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/proyecto")
     public ResponseEntity<Proyecto> editarProyecto(@RequestBody Proyecto proyecto) {
+                if(proyecto.getTitulo().isBlank() || proyecto.getDescripcion().isBlank()|| proyecto.getLink().isBlank()|| proyecto.getUrlRepositorio().isBlank() ){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
         proyectoServ.editarProyecto(proyecto);
         return new ResponseEntity(proyecto, HttpStatus.OK);
     }

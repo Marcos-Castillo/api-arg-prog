@@ -2,6 +2,7 @@ package app.web.marcoscastillo.apiArgProg.controller;
 
 import app.web.marcoscastillo.apiArgProg.model.*;
 import app.web.marcoscastillo.apiArgProg.service.*;
+import app.web.marcoscastillo.apiArgProg.util.Mensaje;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,8 @@ public class SkillController {
     @GetMapping("/ver/skill/{id}")
     public ResponseEntity<Skill> buscarSkill(@PathVariable("id") Long id) {
         Skill skill = skillServ.buscarSkill(id);
+                if( skillServ.buscarSkill(id)==null)
+            return new ResponseEntity(new Mensaje("Skill no encontrada"), HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(skill, HttpStatus.OK);
     }
 
@@ -55,7 +58,13 @@ public class SkillController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/skill")
     public ResponseEntity<Skill> crearSkill(@RequestBody Skill skill) {
-        skillServ.crearSkill(skill);
+        if(skill.getCompetencia()<0 || skill.getCompetencia()>100){
+        return new ResponseEntity(new Mensaje("el valor de competencia debe ser entr 0 y 100"), HttpStatus.BAD_REQUEST);
+        }       
+        if(skill.getNombre().isBlank()){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
+         skillServ.crearSkill(skill);
         return new ResponseEntity(skill, HttpStatus.CREATED);
     }
 
@@ -64,6 +73,12 @@ public class SkillController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/skill")
     public ResponseEntity<Skill> editarSkill(@RequestBody Skill skill) {
+        if(skill.getNombre().isBlank()){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
+                if(skill.getCompetencia()<0 || skill.getCompetencia()>100){
+        return new ResponseEntity(new Mensaje("el valor de competencia debe ser entr 0 y 100"), HttpStatus.BAD_REQUEST);
+        }    
         
         skillServ.editarSkill(skill);
         return new ResponseEntity(skill, HttpStatus.OK);

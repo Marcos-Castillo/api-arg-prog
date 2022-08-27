@@ -6,6 +6,7 @@ package app.web.marcoscastillo.apiArgProg.controller;
 
 import app.web.marcoscastillo.apiArgProg.model.Experiencia;
 import app.web.marcoscastillo.apiArgProg.service.IExperienciaService;
+import app.web.marcoscastillo.apiArgProg.util.Mensaje;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,10 @@ public class ExperienciaController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/experiencia")
     public ResponseEntity<Experiencia> crearExperiencia(@RequestBody Experiencia exp) {
+          if(exp.getPuesto().isBlank() || exp.getDescripcion().isBlank()|| exp.getIngreso().isBlank()|| exp.getEgreso().isBlank() ){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
+          
         expServ.crearExperiencia(exp);
         return new ResponseEntity(exp, HttpStatus.CREATED);
     }
@@ -50,6 +55,9 @@ public class ExperienciaController {
         @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/experiencia")
     public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia exp) {
+          if(exp.getPuesto().isBlank() || exp.getDescripcion().isBlank()|| exp.getIngreso().isBlank()|| exp.getEgreso().isBlank() ){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
         expServ.editarExperiencia(exp);
         return new ResponseEntity(exp, HttpStatus.OK);
     }

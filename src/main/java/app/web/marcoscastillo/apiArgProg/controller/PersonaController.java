@@ -6,6 +6,7 @@ package app.web.marcoscastillo.apiArgProg.controller;
 
 import app.web.marcoscastillo.apiArgProg.model.Persona;
 import app.web.marcoscastillo.apiArgProg.service.IPersonaService;
+import app.web.marcoscastillo.apiArgProg.util.Mensaje;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +45,17 @@ public class PersonaController {
     @PostMapping("/agregar/persona")
     public ResponseEntity<Persona> crearPersona(@RequestBody Persona pers) {
         perServ.crearPersona(pers);
-        return new ResponseEntity(pers, HttpStatus.CREATED);//httpstatus 201  ok + modificado
+        return new ResponseEntity(pers, HttpStatus.CREATED);
     }
     
         @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/persona")
     public ResponseEntity<Persona> editarPersona(@RequestBody Persona pers) {
-        perServ.editarPersona(pers);
+        if(pers.getAbout().isBlank() || pers.getApellido().isBlank()|| pers.getNombre().isBlank()|| pers.getProfesion().isBlank()|| pers.getUbicacion().isBlank()|| pers.getUrlGithub().isBlank()|| pers.getUrlLinkedin().isBlank() ){
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
+        }
+        perServ.editarPersona(pers); 
+       
         return new ResponseEntity(pers, HttpStatus.OK);
     }
         /*
