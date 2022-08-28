@@ -6,7 +6,7 @@ import app.web.marcoscastillo.apiArgProg.security.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
+/*
 @Component
 public class CreateRoles implements CommandLineRunner {
 
@@ -19,5 +19,6 @@ public class CreateRoles implements CommandLineRunner {
         Rol rolUser = new Rol(RolNombre.ROLE_USER);
         rolService.save(rolAdmin);
         rolService.save(rolUser);
-    }
+  
 } 
+  }*/

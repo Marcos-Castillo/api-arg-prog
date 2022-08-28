@@ -45,7 +45,7 @@ public class AuthController {
 
     @Autowired
     JwtProvider jwtProvider;
-
+/*
     //Espera un json y lo convierte a tipo clase NuevoUsuario
     @PostMapping("/nuevoUsuario")
     public ResponseEntity<?> nuevoUsuario(@Valid @RequestBody NuevoUsuario nuevoUsuario,
@@ -72,7 +72,7 @@ public class AuthController {
         usuarioService.save(usuario);
 
         return new ResponseEntity<>(new Mensaje("Usuario creado"), HttpStatus.CREATED);
-    }
+    }*/
 
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
