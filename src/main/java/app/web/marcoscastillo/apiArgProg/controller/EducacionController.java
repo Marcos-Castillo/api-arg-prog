@@ -6,6 +6,7 @@ package app.web.marcoscastillo.apiArgProg.controller;
 
 import app.web.marcoscastillo.apiArgProg.model.Educacion;
 import app.web.marcoscastillo.apiArgProg.service.IEducacionService;
+import app.web.marcoscastillo.apiArgProg.util.Mensaje;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class EducacionController {
     public ResponseEntity<Educacion> crearEducacion(@RequestBody Educacion edu) {
         
           if(edu.getTitulo() !="" || edu.getExpedicion() !="" || edu.getDescripcion() !=""  || edu.getCredencial() !="" ){
-        return new ResponseEntity(edu, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
         }
         eduServ.crearEducacion(edu);
         return new ResponseEntity(edu, HttpStatus.CREATED);
@@ -65,7 +66,7 @@ public class EducacionController {
     public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion edu) {
           
           if(edu.getTitulo() !="" || edu.getExpedicion() !="" || edu.getDescripcion() !=""  || edu.getCredencial() !="" ){
-        return new ResponseEntity(edu, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
         }
         eduServ.editarEducacion(edu);
         return new ResponseEntity(edu, HttpStatus.OK);
