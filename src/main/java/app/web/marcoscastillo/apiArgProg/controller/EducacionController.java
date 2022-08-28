@@ -52,7 +52,7 @@ public class EducacionController {
     @PostMapping("/agregar/educacion")
     public ResponseEntity<Educacion> crearEducacion(@RequestBody Educacion edu) {
         
-          if(edu.getTitulo().isBlank() || edu.getExpedicion().isBlank()|| edu.getDescripcion().isBlank()|| edu.getCredencial().isBlank() ){
+          if(edu.getTitulo() !="" || edu.getExpedicion() !="" || edu.getDescripcion() !=""  || edu.getCredencial() !="" ){
         return new ResponseEntity(edu, HttpStatus.BAD_REQUEST);
         }
         eduServ.crearEducacion(edu);
@@ -64,7 +64,7 @@ public class EducacionController {
     @PutMapping("/editar/educacion")
     public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion edu) {
           
-          if(edu.getTitulo().isBlank() || edu.getExpedicion().isBlank()|| edu.getDescripcion().isBlank()|| edu.getCredencial().isBlank() ){
+          if(edu.getTitulo() !="" || edu.getExpedicion() !="" || edu.getDescripcion() !=""  || edu.getCredencial() !="" ){
         return new ResponseEntity(edu, HttpStatus.BAD_REQUEST);
         }
         eduServ.editarEducacion(edu);

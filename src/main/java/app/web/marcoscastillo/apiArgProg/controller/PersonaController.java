@@ -51,7 +51,7 @@ public class PersonaController {
         @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/persona")
     public ResponseEntity<Persona> editarPersona(@RequestBody Persona pers) {
-        if(pers.getAbout().isBlank() || pers.getApellido().isBlank()|| pers.getNombre().isBlank()|| pers.getProfesion().isBlank()|| pers.getUbicacion().isBlank()|| pers.getUrlGithub().isBlank()|| pers.getUrlLinkedin().isBlank() ){
+        if(pers.getAbout() !="" || pers.getApellido() !=""|| pers.getNombre() !=""|| pers.getProfesion() !=""|| pers.getUbicacion() !=""|| pers.getUrlGithub() !=""|| pers.getUrlLinkedin() !="" ){
         return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
         }
         perServ.editarPersona(pers); 

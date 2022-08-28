@@ -44,7 +44,7 @@ public class ExperienciaController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/experiencia")
     public ResponseEntity<Experiencia> crearExperiencia(@RequestBody Experiencia exp) {
-          if(exp.getPuesto().isBlank() || exp.getDescripcion().isBlank()|| exp.getIngreso().isBlank()|| exp.getEgreso().isBlank() ){
+          if(exp.getPuesto() !="" || exp.getDescripcion() !=""|| exp.getIngreso() !=""|| exp.getEgreso() !="" ){
         return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
         }
           
@@ -55,7 +55,7 @@ public class ExperienciaController {
         @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/experiencia")
     public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia exp) {
-          if(exp.getPuesto().isBlank() || exp.getDescripcion().isBlank()|| exp.getIngreso().isBlank()|| exp.getEgreso().isBlank() ){
+          if(exp.getPuesto() !="" || exp.getDescripcion() !=""|| exp.getIngreso() !=""|| exp.getEgreso() !="" ){
         return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
         }
         expServ.editarExperiencia(exp);
