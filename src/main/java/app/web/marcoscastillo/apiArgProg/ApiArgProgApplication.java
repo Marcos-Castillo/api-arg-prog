@@ -18,7 +18,7 @@ public class ApiArgProgApplication {
         public CorsFilter corsFilter(){
             CorsConfiguration corsConFiguration  =new  CorsConfiguration();
             corsConFiguration.setAllowCredentials(true);
-            corsConFiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+            corsConFiguration.setAllowedOrigins(Arrays.asList("https://marcos-castillo.web.app/"));
             corsConFiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                     "Accept","Authorization", "Origin, Accept", "X-Request-With",
                     "Access-Control-Request-Method", "Access-Control-Request-Headers"));
