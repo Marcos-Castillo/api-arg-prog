@@ -50,12 +50,12 @@ public class SkillController {
    // @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/skill")
     public ResponseEntity<Skill> crearSkill(@RequestBody Skill skill) {
-        if(skill.getCompetencia()<0 || skill.getCompetencia()>100){
+    /*    if(skill.getCompetencia()<0 || skill.getCompetencia()>100){
         return new ResponseEntity(new Mensaje("el valor de competencia debe ser entr 0 y 100"), HttpStatus.BAD_REQUEST);
         }       
         if(skill.getNombre() !=""){
         return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
-        }
+        }*/
          skillServ.crearSkill(skill);
         return new ResponseEntity(skill, HttpStatus.CREATED);
     }
