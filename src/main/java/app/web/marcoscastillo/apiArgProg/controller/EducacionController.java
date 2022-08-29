@@ -53,10 +53,7 @@ public class EducacionController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/educacion")
     public ResponseEntity<Educacion> crearEducacion(@RequestBody Educacion edu) {
-        
-          if(edu.getTitulo() !="" || edu.getExpedicion() !="" || edu.getDescripcion() !=""  || edu.getCredencial() !="" ){
-        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
-        }
+      
         eduServ.crearEducacion(edu);
         return new ResponseEntity(edu, HttpStatus.CREATED);
     }
@@ -65,10 +62,7 @@ public class EducacionController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/educacion")
     public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion edu) {
-          
-          if(edu.getTitulo() !="" || edu.getExpedicion() !="" || edu.getDescripcion() !=""  || edu.getCredencial() !="" ){
-        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
-        }
+         
         eduServ.editarEducacion(edu);
         return new ResponseEntity(edu, HttpStatus.OK);
     }
