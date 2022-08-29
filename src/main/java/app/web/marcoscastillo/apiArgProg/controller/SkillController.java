@@ -47,7 +47,7 @@ public class SkillController {
 
     // metodod post  guardando
 
-   // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/skill")
     public ResponseEntity<Skill> crearSkill(@RequestBody Skill skill) {
     /*    if(skill.getCompetencia()<0 || skill.getCompetencia()>100){
