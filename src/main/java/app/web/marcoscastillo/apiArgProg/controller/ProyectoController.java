@@ -46,9 +46,7 @@ public class ProyectoController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar/proyecto")
     public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto) {
-                if(proyecto.getTitulo() !="" || proyecto.getDescripcion() !=""|| proyecto.getLink() !=""|| proyecto.getUrlRepositorio() !="" ){
-        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
-        }
+                
         proyectoServ.crearProyecto(proyecto);
         return new ResponseEntity(proyecto, HttpStatus.CREATED);
     }
@@ -57,9 +55,7 @@ public class ProyectoController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/proyecto")
     public ResponseEntity<Proyecto> editarProyecto(@RequestBody Proyecto proyecto) {
-                if(proyecto.getTitulo() !="" || proyecto.getDescripcion() !=""|| proyecto.getLink() !=""|| proyecto.getUrlRepositorio() !="" ){
-        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
-        }
+                
         proyectoServ.editarProyecto(proyecto);
         return new ResponseEntity(proyecto, HttpStatus.OK);
     }
