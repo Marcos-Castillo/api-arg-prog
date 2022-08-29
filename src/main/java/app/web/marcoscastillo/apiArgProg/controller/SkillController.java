@@ -28,15 +28,6 @@ public class SkillController {
     public ISkillService skillServ;
 
     // metodod get all
-    @GetMapping("/")
-    @ResponseBody
-    public String inicio() {
-        return "<a href=\"/ver/persona\">ver Personas</a> <br/>"
-                + "<a href=\"/ver/educacion\">ver Educacion</a> <br/>"
-                + "<a href=\"/ver/experiencia\">ver Experiencia</a> <br/>"
-                + "<a href=\"/ver/proyecto\">ver Proyecto</a> <br/>"
-                + "<a href=\"/ver/skill\">ver Skill</a> <br/>";
-    }
 
     @GetMapping("/ver/skill")
     public ResponseEntity<List<Skill>> verSkill() {

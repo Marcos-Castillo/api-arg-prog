@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,6 +29,12 @@ public class PersonaController {
         @Autowired
         public IPersonaService perServ;
         
+        
+    @GetMapping("/")
+    @ResponseBody
+    public String inicio() {
+        return "API funcionando";
+    }
         
     @GetMapping("/ver/persona")
     public ResponseEntity<List<Persona>> verPersonas() {
