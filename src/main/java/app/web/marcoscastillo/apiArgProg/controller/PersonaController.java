@@ -59,9 +59,7 @@ public class PersonaController {
         @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/persona")
     public ResponseEntity<Persona> editarPersona(@RequestBody Persona pers) {
-        if(pers.getAbout() !="" || pers.getApellido() !=""|| pers.getNombre() !=""|| pers.getProfesion() !=""|| pers.getUbicacion() !=""|| pers.getUrlGithub() !=""|| pers.getUrlLinkedin() !="" ){
-        return new ResponseEntity(new Mensaje("el campo no debe estar vacio"), HttpStatus.BAD_REQUEST);
-        }
+        
         perServ.editarPersona(pers); 
        
         return new ResponseEntity(pers, HttpStatus.OK);
