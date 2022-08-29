@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
-@CrossOrigin("https://marcos-castillo.web.app")
 public class PersonaController {
     
         @Autowired
